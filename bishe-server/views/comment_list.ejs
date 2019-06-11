@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <script src="/javascripts/jquery-2.1.4.min.js"></script>
+    <title>话题列表</title>
+    <script>
+            function del(id,communication_id) {
+              $.post("/comment_list/delcomment",{commentId:id,communication_id:communication_id},function(result){
+                  if(result.status = "ok"){
+                      window.location.reload();
+                  }else{
+                      alert('删除失败');
+                  }
+              });
+            }
+          </script>
+</head>
+<body>
+    <div id="left" >
+        <%-include navigation%>
+     </div>
+     <div id="content">
+   <table class="table table-bordered">
+        <caption>话题列表</caption>
+       <thead>
+           <tr>   
+               <th>用户名字</th>
+               <th>用户头像</th>
+               <th>评论时间</th>
+               <th>评论内容</th>
+               <th>点赞</th>
+               <th>删除</th>
+               <th>修改</th>
+         
+           </tr>   
+       </thead>
+       <tbody>
+         
+           <% for(var i=0; i<communications.comments.length; i++){%>
+                <tr>
+               <td><%= communications.comments[i].user_name %></td>
+               <td><img style="width:100px" src='<%= communications.comments[i].user_img %>'  alt=""></td>
+               <td><%= communications.comments[i].time %></td>
+               <td><%= communications.comments[i].comment %></td>
+               <td><%= communications.comments[i].zan %></td>
+               <!-- <td><a class="btn btn-default" href="/list/del/<%=communications._id%>" role="button">删除</a></td> -->
+               <td><button onclick="del('<%= communications.comments[i]._id %>','<%= communications._id %>')">删除</button></td>
+               <td><a class="btn btn-default" href="/communication_edit/<%= communications._id %>" role="button">修改</a></td>
+         
+              </tr>
+          <% } %>
+        
+            </tr>
+       </tbody>
+   </table>
+</div>
+</body>
+</html>
+<style> 
+    #left{
+        float: left;
+        width: 200px;
+     
+    }
+    #content{
+        padding-top: 100px;
+        margin-left: 220px
+    }
+
+    </style>

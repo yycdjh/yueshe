@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel="stylesheet" href="/stylesheets/layui.css" />
+    <script src="/javascripts/jquery-2.1.4.min.js"></script>
+    <script src='/javascripts/layui.js'></script>
+    <title>添加设计任务</title>
+</head>
+<body>
+     <div id="content">
+    <form class="layui-form" action="/task_add/add" lay-filter="example" role="form" method="post">
+        <div class="layui-form-item">
+          <label class="layui-form-label">标题</label>
+          <div class="layui-input-block">
+            <input type="text" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input" name="task_name" value=<%= task.task_name %>>
+          </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">作者</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请输入作者名字" autocomplete="off" class="layui-input" name="author" value=<%= task.author %>>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">头像</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请上传作者头像" autocomplete="off" class="layui-input" name="author_img" value=<%= task.author_img %>>
+            </div>
+        </div>   
+        <div class="layui-form-item">
+            <label class="layui-form-label">内容</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请输内容" autocomplete="off" class="layui-input" name="summary" value=<%= task.summary %>>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">赏金</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请输入赏金" autocomplete="off" class="layui-input" name="money" value=<%= task.money %>>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类</label>
+            <div class="layui-input-block">
+              <select name="classification" lay-filter="aihao">
+                <option value=""></option>
+                <option value="0">logo设计</option>
+                <option value="1" selected="">UI设计</option>
+                <option value="2">广告设计</option>
+                <option value="3">包装设计</option>
+              </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">审核</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="审核" autocomplete="off" class="layui-input" name="pass" value=<%= task.pass %>>
+            </div>
+        </div>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+          </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+<script>
+    layui.use('form', function(){
+      var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功  
+      //……
+      //但是，如果你的HTML是动态生成的，自动渲染就会失效
+      //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+      form.render();
+    });
+</script>
+<style> 
+
+</style>

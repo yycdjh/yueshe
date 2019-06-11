@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/leftnav.css" />
+    <link rel="stylesheet" href="/stylesheets/layui.css" />
+
+    <script src="/javascripts/jquery.js"></script>
+    <script src='/javascripts/leftnav.js'></script>
+    <script src='/javascripts/layui.js'></script>
+  </head>
+  <!-- <body style="padding: 0px;">
+
+      <a class="list-title">后台管理系统</a>
+      <ul id="accordion" class="accordion">
+          <li>
+              <div class="link">话题管理</div>
+              <ul class="submenu">
+                  <li><a href="/communication_add">添加话题</a></li>
+                  <li><a href="/communication_list">所有话题</a></li>
+                  <li><a href="/communication_examine">审核话题</a></li>
+                  
+              </ul>
+          </li>
+          <li>
+            <div class="link">需求任务管理</div>
+            <ul class="submenu">
+                <li><a href="/task_add">添加任务</a></li>
+                <li><a href="/task_list">所有任务</a></li>
+                <li><a href="/communication_examine">审核话题</a></li>
+                
+            </ul>
+        </li>
+          <li>
+            <div class="link">公告管理</div>
+            <ul class="submenu">
+                <li><a href="/xiaonei_add">添加话题</a></li>
+                <li><a href="/xiaonei_list">所有话题</a></li>
+                <li><a href="/xiaonei_examine">审核话题</a></li>
+                
+            </ul>
+        </li>
+          <li>
+              <div class="link">用户管理</div>
+              <ul class="submenu">
+                  <li><a href="/users_list">用户</a></li>
+              
+              </ul>
+          </li>
+          <li>
+              <div class="link"><i class="fa fa-pencil-square-o"></i>轮播图管理<i class="fa fa-chevron-down"></i></div>
+              <ul class="submenu">
+                  <li></li><a>修改轮播图</a></li>
+              </ul>
+          </li>
+
+      
+      </ul>
+  
+  </div> -->
+  <body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+      <div class="layui-header">
+        <div class="layui-logo">后台管理系统</div>
+        <!-- 头部区域（可配合layui已有的水平导航）
+        <ul class="layui-nav layui-layout-left">
+          <li class="layui-nav-item"><a href="">控制台</a></li>
+          <li class="layui-nav-item"><a href="">商品管理</a></li>
+          <li class="layui-nav-item"><a href="">用户</a></li>
+          <li class="layui-nav-item">
+            <a href="javascript:;">其它系统</a>
+            <dl class="layui-nav-child">
+              <dd><a href="">邮件管理</a></dd>
+              <dd><a href="">消息管理</a></dd>
+              <dd><a href="">授权管理</a></dd>
+            </dl>
+          </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+          <li class="layui-nav-item">
+            <a href="javascript:;">
+              <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+              贤心
+            </a>
+            <dl class="layui-nav-child">
+              <dd><a href="">基本资料</a></dd>
+              <dd><a href="">安全设置</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item"><a href="">退了</a></li>
+        </ul> -->
+      </div>
+      
+      <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+          <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+          <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+            <li class="layui-nav-item first">
+              <a class="" href="javascript:;">话题管理</a>
+              <dl class="layui-nav-child">
+                <dd><a href="/communication_add">添加话题</a></dd>
+                <dd><a href="/communication_list">所有话题</a></dd>
+                <dd><a href="/communication_examine">审核话题</a></dd>
+               
+              </dl>
+            </li>
+            <li class="layui-nav-item second">
+              <a href="javascript:;">需求任务管理</a>
+              <dl class="layui-nav-child">
+                <dd><a href="/task_add">添加任务</a></dd>
+                <dd><a href="/task_list">所有任务</a></dd>
+               
+              </dl>
+            </li>
+            <li class="layui-nav-item third">
+              <a href="javascript:;">公告管理</a>
+              <dl class="layui-nav-child">
+                <dd><a href="/announcement">添加公告</a></dd>
+                <dd><a href="/announcementmanage">公告管理</a></dd>
+               
+              </dl>
+              
+            </li>
+            <li class="layui-nav-item fourth">
+              <a href="javascript:;">用户管理</a>
+              <dl class="layui-nav-child">
+                <dd><a href="/users_list">用户</a></dd>
+
+
+              </dl>
+              
+            </li>
+            <li class="layui-nav-item fifth">
+              <a href="javascript:;">轮播图管理</a>
+              <dl class="layui-nav-child">
+                <dd><a href="/xiaonei_examine">审核话题</a></dd>
+
+
+              </dl>
+              
+            </li>
+          </ul>
+        </div>
+      </div id="content">
+      
+
+    </div>
+<style>
+.headfixed{
+  position: fixed;
+}
+</style>
+    <script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+      var element = layui.element;
+      
+    });
+    $(document).ready(function(){
+      $(".layui-logo").width($(document).width());
+      $(".layui-layout-admin").width($(document).width());
+      // $(".layui-logo").addClass("headfixed")
+      // $(".layui-layout-admin").addClass("headfixed")
+      if(window.location.pathname == "/communication_add"||window.location.pathname == "/communication_list"||window.location.pathname == "/communication_examine"){
+          $(".first").addClass("layui-nav-itemed");
+          $(".second").removeClass("layui-nav-itemed");
+          $(".third").removeClass("layui-nav-itemed");
+          $(".fourth").removeClass("layui-nav-itemed");
+          $(".fifth").removeClass("layui-nav-itemed");
+      }else if(window.location.pathname == "/task_add"||window.location.pathname == "/task_list"){
+          $(".second").addClass("layui-nav-itemed");
+          $(".first").removeClass("layui-nav-itemed");
+          $(".third").removeClass("layui-nav-itemed");
+          $(".fourth").removeClass("layui-nav-itemed");
+          $(".fifth").removeClass("layui-nav-itemed");
+      }else if(window.location.pathname == "/announcement"||window.location.pathname == "/announcementmanage"){
+          $(".third").addClass("layui-nav-itemed");
+          $(".second").removeClass("layui-nav-itemed");
+          $(".first").removeClass("layui-nav-itemed");
+          $(".fourth").removeClass("layui-nav-itemed");
+          $(".fifth").removeClass("layui-nav-itemed");
+      }else if(window.location.pathname == "/users_list"){
+          $(".fourth").addClass("layui-nav-itemed");
+          $(".second").removeClass("layui-nav-itemed");
+          $(".third").removeClass("layui-nav-itemed");
+          $(".first").removeClass("layui-nav-itemed");
+          $(".fifth").removeClass("layui-nav-itemed");
+      }else if(window.location.pathname == "/xiaonei_examine"){
+          $(".fifth").addClass("layui-nav-itemed");
+          $(".second").removeClass("layui-nav-itemed");
+          $(".third").removeClass("layui-nav-itemed");
+          $(".fourth").removeClass("layui-nav-itemed");
+          $(".first").removeClass("layui-nav-itemed");
+      }
+});
+    </script>
+  </body>
+</html>

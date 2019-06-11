@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>评论列表</title>
+    <script src="/javascripts/jquery-2.1.4.min.js"></script>
+    <script>
+        function del(id) {
+            $.post("/announcementmanage/delete", { announcementId: id }, function (result) {
+                if (result.status = "ok") {
+                    window.location.reload();
+                } else {
+                    alert('删除失败');
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    
+    <div>
+        <table class="table table-bordered">
+            <caption>公告列表</caption>
+            <thead>
+                <tr>
+                    <th>公告标题</th>
+                    <th>公告图片</th>
+                    <th>公告内容</th>
+                    <th>作者名字</th>
+                    <th>公告时间</th>
+                    <th>删除</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% for(var i=0; i<announcement.length; i++){%>
+                    <tr>
+                        <td>
+                            <%= announcement[i].announcement_title %>
+                        </td>
+                        <td>
+                            <img style="width:100px" src='<%= announcement[i].announcement_img %>' alt="">
+                        </td>
+                        <td>
+                            <%= announcement[i].announcement_contents %>
+                        </td>
+                        <td>
+                            <%= announcement[i].announcement_author %>
+                        </td>
+                        <td>
+                            <%= announcement[i].announcement_time %>
+                        </td>
+                        <td>
+                            <button onclick="del('<%= announcement[i]._id %>')">删除</button>
+                        </td>
+                    </tr>
+                    <% } %>
+                        </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
+<style>
+</style>
